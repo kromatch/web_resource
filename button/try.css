@@ -1,0 +1,64 @@
+@charset "UTF-8";
+.try .btn {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  border: 1px solid black;
+  font-weight: 600;
+  padding: 10px 40px;
+  margin: 10px auto;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  color: black;
+  text-decoration: none !important;
+  /* ここにボタンのスタイルを追加していこう */
+}
+
+.try .btn.float:hover {
+  background-color: black;
+  color: white;
+  -webkit-box-shadow: 6px 5px 5px 5px green;
+          box-shadow: 6px 5px 5px 5px green;
+}
+
+.try .btn.filled {
+  background-color: black;
+  color: white;
+  -webkit-box-shadow: 2px 2px 2px 2px green;
+          box-shadow: 2px 2px 2px 2px green;
+}
+
+.try .btn.filled:hover {
+  background-color: white;
+  color: black;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.try .btn.letter-spacing:hover {
+  background-color: black;
+  color: white;
+  letter-spacing: 3px;
+}
+
+.try .btn.shadow:hover {
+  -webkit-transform: translate(-3px, -3px);
+          transform: translate(-3px, -3px);
+  -webkit-box-shadow: 2px 2px 2px 2px green;
+          box-shadow: 2px 2px 2px 2px green;
+}
+
+.try .btn.solid {
+  -webkit-box-shadow: 1px 1px 1px 1px green;
+          box-shadow: 1px 1px 1px 1px green;
+  border-radius: 10px;
+}
+
+.try .btn.solid:hover {
+  -webkit-transform: translate(3px, 3px);
+          transform: translate(3px, 3px);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+/*# sourceMappingURL=try.css.map */
