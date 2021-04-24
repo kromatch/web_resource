@@ -76,7 +76,7 @@ $cBlack: black;
 
     &.slide-bg {
       position: relative; //親要素にrelativeを設定しないと、子要素でposition:absoluteで絶対位置を決められない
-      overflow: hidden; //枠外にはみ出したものはhidden visibleだと見えるようになる
+      // overflow: hidden; //枠外にはみ出したものはhidden visibleだと見えるようになる
       z-index: 1; //spanより前に出す
 
       // & span {
@@ -103,7 +103,7 @@ $cBlack: black;
         top: 0;
         left: 0;
         transform: translateX(-100%);
-        transition: transform 0.3s;
+        transition: transform 1s cubic-bezier(1, -0.04, 0.25, 1); //タイミングファンクション設定
         z-index: -1; //spanがボタンの文字列より前にきているので背面に設定
       }
 
