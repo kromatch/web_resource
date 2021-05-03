@@ -1,12 +1,10 @@
 $cBlack: black;
 
-body{
+body {
   text-align: center;
-
 }
 
-.three-dot-spinner{
-
+.three-dot-spinner {
   & div {
     display: inline-block;
     width: 18px;
@@ -26,35 +24,69 @@ body{
   }
 }
 
-.rect{
-  color: white;
+@mixin animation(
+  $name,
+  $duration: 1s,
+  $timing-function: ease,
+  $delay: 1s,
+  $iteration-count: infinite,
+  $direction: alternate-reverse,
+  $fill-mode: forwards  //normalがデフォルトだが、今回はforwards
+) {
+  animation: {
+    name: $name;
+    duration: $duration;
+    timing-function: $timing-function;
+    delay: $delay;
+    iteration-count: $iteration-count;
+    direction: $direction;
+    fill-mode: $fill-mode;
+  }
+}
+
+.rect {
   display: inline-block;
   width: 100px;
   height: 100px;
   background-color: $cBlack;
-  animation: sk-bouncedelay 1.4s;
-  animation-timing-function: ease; //animationを下のように分けて書くこと推奨
-  animation-delay: 2s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate-reverse;
-  // animation-fill-mode: forwards;
-
+  @include animation($name: sk-squaredelay);
+  // animation: sk-squaredelay 1.4s;
+  // animation-timing-function: ease; //animationを下のように分けて書くこと推奨
+  // animation-delay: 2s;
+  // animation-iteration-count: infinite;
+  // animation-direction: alternate-reverse;
+  // // animation-fill-mode: forwards;
 }
-.paused{
-    animation-play-state: paused;
-    }
+.paused {
+  animation-play-state: paused;
+}
 
-
-
-
-@keyframes sk-bouncedelay { //sk-bouncedelayがキーフレーム
+@keyframes sk-bouncedelay {
+  //sk-bouncedelayがキーフレーム
   0% {
     transform: scale(0);
+    background-color: $cBlack;
   }
-  40% {transform: scale(1);
+  40% {
+    transform: scale(1);
   }
   80% {
     transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes sk-squaredelay {
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(0.3);
+  }
+  80% {
+    transform: scale(0.7);
   }
   100% {
     transform: scale(1);
