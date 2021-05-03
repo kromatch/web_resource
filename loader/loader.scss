@@ -11,17 +11,23 @@ body {
     height: 18px;
     background-color: $cBlack;
     border-radius: 50%;
+    animation: sk-bouncedelay 1.4s infinite;
+    //infiniteは無限繰り返す
 
-    animation: sk-bouncedelay 1.4s infinite; //infiniteは無限繰り返す
+    @for $i from 1 through 2 {
+      &:nth-child(#{$i}) {
+        animation-delay: -0.32s / $i;
+      }
+    }
   }
 
-  & .bounce1 {
-    animation-delay: -0.32s; //マイナスにすると他より早くなる
-  }
+  // & .bounce1 {
+  //   animation-delay: -0.32s; //マイナスにすると他より早くなる
+  // }
 
-  & .bounce2 {
-    animation-delay: -0.16s;
-  }
+  // & .bounce2 {
+  //   animation-delay: -0.16s;
+  // }
 }
 
 @mixin animation(
@@ -31,7 +37,7 @@ body {
   $delay: 1s,
   $iteration-count: infinite,
   $direction: alternate-reverse,
-  $fill-mode: forwards  //normalがデフォルトだが、今回はforwards
+  $fill-mode: forwards //normalがデフォルトだが、今回はforwards
 ) {
   animation: {
     name: $name;
