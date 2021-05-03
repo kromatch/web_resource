@@ -1,0 +1,63 @@
+$cBlack: black;
+
+body{
+  text-align: center;
+
+}
+
+.three-dot-spinner{
+
+  & div {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: $cBlack;
+    border-radius: 50%;
+
+    animation: sk-bouncedelay 1.4s infinite; //infiniteは無限繰り返す
+  }
+
+  & .bounce1 {
+    animation-delay: -0.32s; //マイナスにすると他より早くなる
+  }
+
+  & .bounce2 {
+    animation-delay: -0.16s;
+  }
+}
+
+.rect{
+  color: white;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: $cBlack;
+  animation: sk-bouncedelay 1.4s;
+  animation-timing-function: ease; //animationを下のように分けて書くこと推奨
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  // animation-fill-mode: forwards;
+
+}
+.paused{
+    animation-play-state: paused;
+    }
+
+
+
+
+@keyframes sk-bouncedelay { //sk-bouncedelayがキーフレーム
+  0% {
+    transform: scale(0);
+  }
+  40% {transform: scale(1);
+  }
+  80% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    background-color: green;
+  }
+}
