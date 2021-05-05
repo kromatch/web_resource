@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   text-align: center;
 }
@@ -38,8 +39,8 @@ body {
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: normal;
+          animation-fill-mode: normal;
 }
 
 .paused {
@@ -124,6 +125,203 @@ body {
     -webkit-transform: scale(1);
             transform: scale(1);
     background-color: green;
+  }
+}
+
+#container {
+  display: inline-block;
+}
+
+/** ここに記述しよう */
+.spinner {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: red;
+  -webkit-animation-name: sk-spinner;
+          animation-name: sk-spinner;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: normal;
+          animation-fill-mode: normal;
+}
+
+@-webkit-keyframes sk-spinner {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+
+@keyframes sk-spinner {
+  0% {
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+
+.double-spinner {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  margin: 100px auto;
+}
+
+.double-spinner > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.6;
+  -webkit-animation-name: sk-double-spinner;
+          animation-name: sk-double-spinner;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: normal;
+          animation-fill-mode: normal;
+}
+
+.double-spinner > div:nth-child(2) {
+  -webkit-animation-delay: -2s;
+          animation-delay: -2s;
+}
+
+@-webkit-keyframes sk-double-spinner {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes sk-double-spinner {
+  0%,
+  100% {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.rect-spinner {
+  width: 50px;
+  height: 40px;
+  margin: 100px auto;
+  text-align: center;
+  letter-spacing: -2px;
+}
+
+.rect-spinner > div {
+  background-color: black;
+  display: inline-block;
+  width: 6px;
+  height: 100%;
+  -webkit-animation-name: sk-rect-spinner;
+          animation-name: sk-rect-spinner;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  -webkit-animation-timing-function: ease-in-out;
+          animation-timing-function: ease-in-out;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: normal;
+          animation-direction: normal;
+  -webkit-animation-fill-mode: normal;
+          animation-fill-mode: normal;
+}
+
+.rect-spinner > div:nth-child(1) {
+  -webkit-animation-delay: -1.2s;
+          animation-delay: -1.2s;
+}
+
+.rect-spinner > div:nth-child(2) {
+  -webkit-animation-delay: -1.1s;
+          animation-delay: -1.1s;
+}
+
+.rect-spinner > div:nth-child(3) {
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+
+.rect-spinner > div:nth-child(4) {
+  -webkit-animation-delay: -0.9s;
+          animation-delay: -0.9s;
+}
+
+.rect-spinner > div:nth-child(5) {
+  -webkit-animation-delay: -0.8s;
+          animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-rect-spinner {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes sk-rect-spinner {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.4);
+            transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
   }
 }
 /*# sourceMappingURL=loader.css.map */
