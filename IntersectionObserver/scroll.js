@@ -1,9 +1,9 @@
 class ScrollObserver {
     constructor(els, cb, options) {
-      this.els = document.querySelectorAll(els);
+      this.els = document.querySelectorAll(els); //els=elements略
       const defaultOptions = {
-        root: null,
-        rootMargin: "0px",
+        root: null, //交差対象としたい親の要素を入れる
+        rootMargin: "0px", //デフォルトはviewpoint=画面いっぱいが交差点だが、指定できる
         threshold: 0,
         once: true, //デフォルト　一度画面に入れば、解除される
       };
@@ -19,12 +19,12 @@ class ScrollObserver {
     // プロパティに値を入れ切った後に複雑な初期化処理をした方が変数の定義漏れを防げる
   
     _init() {
-      const callback = function (entries, observer) {
-        entries.forEach((entry) => {
+      const callback = function (entries, observer) {  
+        entries.forEach((entry) => { //entry=画面に入ってきた各要素　複数要素があるとき、どれが入ってきたのかわからないといけない
           if (entry.isIntersecting) {
-            this.cb(entry.target, true); //第一引数は監視しているDOMを渡す。第２引数に、交差しているかしていないかのtrue,falseを渡す
+            this.cb(entry.target, true); //第一引数は監視しているDOMを渡す。(entry.targetに画面に入ってきた要素が格納されている)第２引数に、交差しているかしていないかのtrue,falseを渡す
             if (this.once) {
-              observer.unobserve(entry.target);
+              observer.unobserve(entry.target); //一度入ったタイミングで監視を止めたい時
             }
           } else {
             this.cb(entry.target, false);
