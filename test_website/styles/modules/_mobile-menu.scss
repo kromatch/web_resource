@@ -1,0 +1,118 @@
+
+$cMenuClose: $cBlack;
+$cMenuOpen: $cBlack;
+
+
+
+
+.mobile-menu {
+  position: fixed; //背面にメニューが映った
+  right: 0;
+  top: 60px; //メニューを開いた時に、トップから60pxのところで表示
+  width: 300px;
+
+  & .logo{
+    padding: 0 40px;
+    font-size: 38px;
+  }
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden; //coverがメニューバーを隠してしまうので、アニメーションが動かない
+    //クリックした時にも要素に反応しないようになる。
+    transition: opacity 1s;
+    cursor: pointer;
+    z-index: 200;
+  }
+
+  &__main {
+    //BEM(Block Element Modifier)
+    padding: 0;
+    perspective: 2000px; //3Dアニメーションは親要素に必要　奥行 2000px手前から見る感じ
+    transform-style: preserve-3d; //3Dアニメーションは親要素に必要
+  }
+  &__item {
+    list-style: none; //listの先頭に着く●を非表示
+    display: block; //横幅いっぱい広がるように
+    transform: translate3d(0, 0, -1000px); //-1000px奥行
+    padding: 0 40px;
+    transition: transform 0.3s, opacity 0.2s;
+    opacity: 0;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 30px; //アイデムごとの間隔
+    color: $cBlack;
+    text-decoration: none !important; //テキストのデフォルトデコレーションをなくす　listの下線
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    outline: none !important;
+    cursor: pointer;
+
+    & > span {
+      background-color: $cMenuClose;
+      width: 35px;
+      height: 2px;
+      display: block;
+      margin-bottom: 9px;
+      transition: transform 0.7s;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.menu-open {
+  & #container {
+    transform: translate(-300px, 60px);
+    box-shadow: 0 8px 40px -10px rgba(0, 0, 0, 0.8);
+  }
+
+  & .mobile-menu {
+    &__item {
+      transform: none;
+      opacity: 1;
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          transition-delay: $i * 0.07s;
+        }
+      }
+    }
+
+    &__cover {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    &__btn {
+      & > span {
+        background-color: $cMenuOpen;
+
+        &:nth-child(1) {
+          transition-delay: 70ms;
+          transform: translateY(11px) rotate(135deg);
+        }
+        &:nth-child(2) {
+          transition-delay: 0s;
+          transform: translateX(-18px) scaleX(0);
+        }
+        &:nth-child(3) {
+          transition-delay: 140ms;
+          transform: translateY(-11px) rotate(-135deg);
+        }
+      }
+    }
+  }
+}

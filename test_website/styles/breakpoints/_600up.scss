@@ -1,0 +1,57 @@
+/******************************************************************
+
+Stylesheet: 600px以上のタブレットやモニタで適用
+
+******************************************************************/
+
+.flex {
+  flex-direction: row;
+  flex-wrap: wrap; //折り返し設定 frex-basisが50%なので、2つ並ぶ＝合計横幅100%
+}
+.houses {
+
+  &__item{
+    flex-basis: 50%; //横幅のwidth設定と同じ。子要素につけることで基本横幅設定が可能
+    margin-bottom: 60px;
+  }
+}
+
+.places {
+
+  &__container{
+    justify-content: space-between; //水平方向の横幅定義をすれば、自然に空間ができる6px
+  }
+  
+  &__item{
+flex-basis: 47%;
+
+  }
+}
+
+.travel{
+
+  &__inner{
+    padding:50px;
+  }
+  &__texts,
+  &__img{
+flex-basis: 47%;
+  }
+
+  &__texts{
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.footer{
+
+  & .logo{
+    justify-content: flex-start; //左寄り
+  }
+
+  &__li{
+    margin-left: 0;
+    margin-right: 30px; //baseでは上下左右に10pxのため;
+  }
+}
